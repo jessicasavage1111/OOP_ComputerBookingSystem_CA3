@@ -1,2 +1,6 @@
-package com.dkit.sd2a.jessicasavage;public enum MenuOptions {
+package com.dkit.sd2a.jessicasavage;
+
+public enum MenuOptions
+{
+    CONTINUE,PRINT_STUDENT, ADD_STUDENT, EDIT_STUDENT, DELETE_STUDENT, PRINT_BOOKING, ADD_BOOKING, EDIT_BOOKING, DELETE_BOOKING, SORT_BOOKING,  AVERAGE_LENGTH, QUIT;
 }
