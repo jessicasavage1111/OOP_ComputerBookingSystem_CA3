@@ -1,31 +1,32 @@
 package com.dkit.sd2a.jessicasavage;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Student {
-    private String name;
-    private String studentID;
-    private String email;
-    private String phone;
-    private String assetTag;
-    private Map<String,Computer> computersOnLoan;
+    private static String name;
+    private static String studentID;
+    private static String email;
+    private static String phone;
+    private String[] computersOnLoan;
 
-    public Student(String name, String studentID, String email, String phone, String assetTag) {
+    public Student(String name, String studentID, String email, String phone, String[] computersOnLoan) {
         this.name = name;
         this.studentID = studentID;
         this.email = email;
         this.phone = phone;
-        this.assetTag = assetTag;
-        computersOnLoan = new HashMap<>();
+        this.computersOnLoan = computersOnLoan;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getStudentID() {
+    public static String getStudentID() {
         return studentID;
+    }
+
+    public static void setStudentID(String studentID) {
+        Student.studentID = studentID;
     }
 
     public String getEmail() {
@@ -36,26 +37,51 @@ public class Student {
         return phone;
     }
 
-    public void addComputer(Computer onLoan){
-        computersOnLoan.put(onLoan.getAssetTag(),onLoan);
-    }
-
-    public Map getComputers(){
+    public String[] getComputersOnLoan() {
         return computersOnLoan;
     }
 
-    public Computer getStudentByAssetTag(String studentID){
-        return computersOnLoan.get(assetTag);
+    public static void setName(String name) {
+        Student.name = name;
+    }
+
+    public static void setEmail(String email) {
+        Student.email = email;
+    }
+
+    public static void setPhone(String phone) {
+        Student.phone = phone;
+    }
+
+    public void setComputersOnLoan(String[] computersOnLoan) {
+        this.computersOnLoan = computersOnLoan;
     }
 
     @Override
     public String toString() {
         return "Student{" +
                 "name='" + name + '\'' +
-                ", studentID='" + studentID + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
-                ", computer='" + getComputers() + '\'' +
+                ", computersOnLoan=" + Arrays.toString(computersOnLoan) +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return Objects.equals(name, student.name) &&
+                Objects.equals(email, student.email) &&
+                Objects.equals(phone, student.phone) &&
+                Arrays.equals(computersOnLoan, student.computersOnLoan);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(name, email, phone);
+        result = 31 * result + Arrays.hashCode(computersOnLoan);
+        return result;
     }
 }

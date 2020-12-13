@@ -1,10 +1,13 @@
 package com.dkit.sd2a.jessicasavage;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 public class Laptops extends Computer{
     private int screenSize;
     private int batteryLife;
 
-    public Laptops(String manufacturer, String processor, int ramSize, int diskSize, int weight, String assetTag, String purchaseDate, int screenSize, int batteryLife) {
+    public Laptops(String manufacturer, String processor, double ramSize, double diskSize, double weight, String assetTag, LocalDate purchaseDate, int screenSize, int batteryLife) {
         super(manufacturer, processor, ramSize, diskSize, weight, assetTag, purchaseDate);
         this.screenSize = screenSize;
         this.batteryLife = batteryLife;
